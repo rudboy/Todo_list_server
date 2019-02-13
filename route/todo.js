@@ -49,4 +49,9 @@ router.get("/all_list", async (req, res) => {
   res.json(alllist);
 });
 
+router.post("/Category/delete", async (req, res) => {
+  const deleteproduct = await Product.findById({ _id: req.query.id });
+  await deleteproduct.remove();
+});
+
 module.exports = router;

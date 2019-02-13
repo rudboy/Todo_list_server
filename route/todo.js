@@ -30,6 +30,18 @@ router.get("/all_list", async (req, res) => {
   }
 });
 
+router.get("/update", async (req, res) => {
+  try {
+    let id = req.query.id;
+    const Todo = await Todo.findById(id);
+    Todo.mark = true;
+    await Todo.save();
+    res.json({ modification_ok });
+  } catch (error) {
+    res.status(400).json({ error: { message: error.message } });
+  }
+});
+
 router.get("/delete", async (req, res) => {
   try {
     const deleteproduct = await Todo.findById({ _id: req.query.id });

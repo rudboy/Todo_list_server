@@ -57,6 +57,7 @@ router.get("/delete", async (req, res) => {
   try {
     const deleteproduct = await Todo.findById({ _id: req.query.id });
     await deleteproduct.remove();
+    res.json("Delete okay");
   } catch (error) {
     res.status(400).json({ error: { message: error.message } });
   }

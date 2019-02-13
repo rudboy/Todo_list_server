@@ -15,4 +15,6 @@ app.get("/welcome", (req, res) => {
   res.json("welcome sur la Todo List");
 });
 
-app.listen(process.env.PORT || 3000);
+app.listen(process.env.PORT || 5500, () => {
+  console.log("server listening");
+});

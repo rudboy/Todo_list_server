@@ -5,7 +5,8 @@ const todoRoutes = require("./route/todo");
 const cors = require("cors");
 
 const app = express();
-app.use(body_parser.json(), todoRoutes, cors());
+app.use(body_parser.json(), todoRoutes);
+app.use(cors());
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/todo", {
   useNewUrlParser: true

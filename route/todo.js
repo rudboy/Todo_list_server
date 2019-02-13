@@ -32,8 +32,7 @@ router.get("/all_list", async (req, res) => {
 
 router.get("/update", async (req, res) => {
   try {
-    let id = req.query.id;
-    const Newtodo = await Todo.findById(id);
+    const Newtodo = await Todo.findById({ _id: req.query.id });
     Newtodo.mark = req.query.mark;
     await Newtodo.save();
     res.json("modification ok");
@@ -45,7 +44,6 @@ router.get("/update", async (req, res) => {
 router.get("/delete", async (req, res) => {
   try {
     const deleteproduct = await Todo.findById({ _id: req.query.id });
-
     await deleteproduct.remove();
     res.json("Delete okay");
   } catch (error) {

@@ -45,13 +45,21 @@ router.get("/create_list", async (req, res) => {
 });
 
 router.get("/all_list", async (req, res) => {
-  const alllist = await Todo.find();
-  res.json(alllist);
+  try {
+    const alllist = await Todo.find();
+    res.json(alllist);
+  } catch (error) {
+    res.status(400).json({ error: { message: error.message } });
+  }
 });
 
-router.post("/Category/delete", async (req, res) => {
-  const deleteproduct = await Product.findById({ _id: req.query.id });
-  await deleteproduct.remove();
+router.get("delete", async (req, res) => {
+  try {
+    const deleteproduct = await Todo.findById({ _id: req.query.id });
+    await deleteproduct.remove();
+  } catch (error) {
+    res.status(400).json({ error: { message: error.message } });
+  }
 });
 
 module.exports = router;

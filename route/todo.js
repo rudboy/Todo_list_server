@@ -33,9 +33,9 @@ router.get("/all_list", async (req, res) => {
 router.get("/update", async (req, res) => {
   try {
     let id = req.query.id;
-    const Todo = await Todo.findById(id);
-    Todo.mark = true;
-    await Todo.save();
+    const Newtodo = await Todo.findById(id);
+    Newtodo.mark = req.query.mark;
+    await Newtodo.save();
     res.json("modification ok");
   } catch (error) {
     res.status(400).json({ error: { message: error.message } });

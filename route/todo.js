@@ -1,8 +1,9 @@
 const express = require("express");
+const cors = require("cors");
 const router = express.Router();
 const body_parser = require("body-parser");
 const mongoose = require("mongoose");
-router.use(body_parser.json());
+router.use(body_parser.json(), cors());
 
 const Todo = require("../Models/todo_model");
 

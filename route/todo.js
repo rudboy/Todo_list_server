@@ -44,7 +44,7 @@ router.get("/create_list", async (req, res) => {
   }
 });
 
-router.get("/All_list", async (req, res) => {
+router.get("/all_list", async (req, res) => {
   const alllist = await Category.find().populate("title");
   res.json(alllist);
 });

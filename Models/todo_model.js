@@ -7,7 +7,7 @@ const Todo = mongoose.model("Todo", {
   },
   mark: {
     type: Boolean,
-    default: true
+    default: false
   }
 });
 

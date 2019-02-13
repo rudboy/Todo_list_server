@@ -11,7 +11,7 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/todo", {
   useNewUrlParser: true
 });
 
-app.get("/welcome", (req, res) => {
+app.get("/", (req, res) => {
   res.json("welcome sur la Todo List");
 });
 

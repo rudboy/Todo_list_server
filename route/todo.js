@@ -15,30 +15,6 @@ router.get("/create_list", async (req, res) => {
 
     await newList.save();
     res.json({ message: "New activited created" });
-    // for (let i = 0; i <= req.body.length - 1; i++) {
-    //   // FIND = récupère un tableau d'objets
-    //   // FINDONE = récupère un objet
-    //   const existingList = await Todo.findOne({
-    //     title: req.query[i].title,
-    //     mark: req.query[i].mark
-    //   });
-
-    //   if (existingList === null) {
-    //     const newList = new Todo({
-    //       title: req.query[i].title,
-    //       mark: req.query[i].mark
-    //     });
-
-    //     await newList.save();
-    //     res.json({ message: "New activited created" });
-    //   } else {
-    //     res.status(400).json({
-    //       error: {
-    //         message: "Activited already exists"
-    //       }
-    //     });
-    //   }
-    // }
   } catch (error) {
     res.status(400).json({ error: { message: error.message } });
   }
@@ -56,8 +32,7 @@ router.get("/all_list", async (req, res) => {
 router.get("/delete", async (req, res) => {
   try {
     const deleteproduct = await Todo.findById({ _id: req.query.id });
-    await deleteproduct.remove();
-    res.json("Delete okay");
+    (await deleteproduct.remove()) === true ? res.json("Delete okay") : "";
   } catch (error) {
     res.status(400).json({ error: { message: error.message } });
   }

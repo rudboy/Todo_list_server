@@ -24,8 +24,8 @@ router.get("/create_list", async (req, res) => {
 
 router.get("/all_list", async (req, res) => {
   try {
-    const all_key = await Todo.find({key:req.query.key});
-    const alllist = await Todo.find({text:req.query.text});
+    const all_key = await Todo.find().populate("key");
+    const alllist = await Todo.find().populate("text");
     res.json(alllist);
   } catch (error) {
     res.status(400).json({ error: { message: error.message } });

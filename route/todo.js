@@ -10,9 +10,9 @@ const Todo = require("../Models/todo_model");
 router.get("/create_list", async (req, res) => {
   try {
     const newList = new Todo({
-      text: req.query.title,
+      text: req.query.text,
       key:req.query.key,
-      isDone: req.query.mark
+      isDone: req.query.isDone
     });
 
     await newList.save();

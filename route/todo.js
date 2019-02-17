@@ -10,9 +10,9 @@ const Todo = require("../Models/todo_model");
 router.get("/create_list", async (req, res) => {
   try {
     const newList = new Todo({
-      title: req.query.title,
+      text: req.query.title,
       key:req.query.key,
-      mark: req.query.mark
+      isDone: req.query.mark
     });
 
     await newList.save();
@@ -34,7 +34,7 @@ router.get("/all_list", async (req, res) => {
 router.get("/update", async (req, res) => {
   try {
     const Newtodo = await Todo.findById({ _id: req.query.id });
-    Newtodo.mark = req.query.mark;
+    Newtodo.isDone = req.query.isDone;
     await Newtodo.save();
     res.json("modification ok");
   } catch (error) {

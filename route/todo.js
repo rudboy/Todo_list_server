@@ -11,7 +11,7 @@ router.get("/create_list", async (req, res) => {
   try {
     const newList = new Todo({
       title: req.query.title,
-      key:req.query.key
+      key:req.query.key,
       mark: req.query.mark
     });
 

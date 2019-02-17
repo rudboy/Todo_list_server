@@ -25,7 +25,7 @@ router.get("/create_list", async (req, res) => {
 router.get("/all_list", async (req, res) => {
   try {
     const alllist = await Todo.find();
-    res.json(alllist);
+    res.json(alllist,alllist.text);
   } catch (error) {
     res.status(400).json({ error: { message: error.message } });
   }
